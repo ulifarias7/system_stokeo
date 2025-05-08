@@ -26,13 +26,13 @@ namespace SistemaStokeo.API.Controllers
             try
             {
                 Rsp.status = true;
-                Rsp.Value = await _menuServices.Lista(IdUsuario);
+                Rsp.value = await _menuServices.Lista(IdUsuario);
 
             }
             catch (Exception ex)
             {
                 Rsp.status = false;
-                Rsp.Msg = ex.Message;
+                Rsp.msg = ex.Message;
 
             }
 

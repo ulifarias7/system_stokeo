@@ -37,13 +37,13 @@ namespace SistemaStokeo.API.Controllers
             try
             {
                 Rsp.status = true;
-                Rsp.Value = await _dashBoardservices.Resumen();
+                Rsp.value = await _dashBoardservices.Resumen();
 
             }
             catch (Exception ex)
             {
                 Rsp.status = false;
-                Rsp.Msg = ex.Message;
+                Rsp.msg = ex.Message;
 
             }
 

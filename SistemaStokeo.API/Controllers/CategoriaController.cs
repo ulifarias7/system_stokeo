@@ -28,13 +28,13 @@ namespace SistemaStokeo.API.Controllers
             var Rsp = new Response<List<CategoriaDto>>();
             try
             {
-                Rsp.Value = await _categoriaServices.ListCategoria();
+                Rsp.value = await _categoriaServices.ListCategoria();
                 Rsp.status = true;
             }
             catch (Exception ex)
             {
                 Rsp.status = false;
-                Rsp.Msg = "no se encontro ninguna categoria";
+                Rsp.msg = "no se encontro ninguna categoria";
 
             }
             return Ok(Rsp);
@@ -52,13 +52,13 @@ namespace SistemaStokeo.API.Controllers
             try
             {
                 Rsp.status = true;
-                Rsp.Value = await _categoriaServices.CrearCategoria(crearcategoria);
+                Rsp.value = await _categoriaServices.CrearCategoria(crearcategoria);
 
             }
             catch (Exception ex)
             {
                 Rsp.status = false;
-                Rsp.Msg = ex.Message;
+                Rsp.msg = ex.Message;
 
             }
 

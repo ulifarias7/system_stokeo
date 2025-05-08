@@ -33,13 +33,13 @@ namespace SistemaStokeo.API.Controllers
             try
             {
                 Rsp.status = true;
-                Rsp.Value = await _productoservicio.Listaproducto();
+                Rsp.value = await _productoservicio.Listaproducto();
 
             }
             catch (Exception ex)
             {
                 Rsp.status = false;
-                Rsp.Msg = ex.Message;
+                Rsp.msg = ex.Message;
 
             }
 
@@ -58,13 +58,13 @@ namespace SistemaStokeo.API.Controllers
             try
             {
                 Rsp.status = true;
-                Rsp.Value = await _productoservicio.Crearproducto(producto);
+                Rsp.value = await _productoservicio.Crearproducto(producto);
 
             }
             catch (Exception ex)
             {
                 Rsp.status = false;
-                Rsp.Msg = ex.Message;
+                Rsp.msg = ex.Message;
 
             }
 
@@ -83,13 +83,13 @@ namespace SistemaStokeo.API.Controllers
             try
             {
                 editarProducto.status = true;
-                editarProducto.Value = await _productoservicio.Editarproducto(Producto);
+                editarProducto.value = await _productoservicio.Editarproducto(Producto);
 
             }
             catch (Exception ex)
             {
                 editarProducto.status = false;
-                editarProducto.Msg = ex.Message;
+                editarProducto.msg = ex.Message;
 
             }
 
@@ -110,13 +110,13 @@ namespace SistemaStokeo.API.Controllers
             try
             {
                 eliminarUsuario.status = true;
-                eliminarUsuario.Value = await _productoservicio.Eliminarproducto(id);
+                eliminarUsuario.value = await _productoservicio.Eliminarproducto(id);
 
             }
             catch (Exception ex)
             {
                 eliminarUsuario.status = false;
-                eliminarUsuario.Msg = ex.Message;
+                eliminarUsuario.msg = ex.Message;
 
             }
 

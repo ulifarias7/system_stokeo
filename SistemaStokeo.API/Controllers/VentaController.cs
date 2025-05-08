@@ -29,13 +29,13 @@ namespace SistemaStokeo.API.Controllers
             try
             {
                 Rsp.status = true;
-                Rsp.Value = await _ventaservices.RegistrarVenta(venta);
+                Rsp.value = await _ventaservices.RegistrarVenta(venta);
 
             }
             catch (Exception ex)
             {
                 Rsp.status = false;
-                Rsp.Msg = ex.Message;
+                Rsp.msg = ex.Message;
 
             }
 
@@ -55,13 +55,13 @@ namespace SistemaStokeo.API.Controllers
             try
             {
                 Rsp.status = true;
-                Rsp.Value = await _ventaservices.Historial(Buscarpo,Numerodeventa,fechadeinicio,fechadefin);
+                Rsp.value = await _ventaservices.Historial(Buscarpo,Numerodeventa,fechadeinicio,fechadefin);
 
             }
             catch (Exception ex)
             {
                 Rsp.status = false;
-                Rsp.Msg = ex.Message;
+                Rsp.msg = ex.Message;
 
             }
 
@@ -81,13 +81,13 @@ namespace SistemaStokeo.API.Controllers
             try
             {
                 Rsp.status = true;
-                Rsp.Value = await _ventaservices.Reporte(fechadeinicio, fechadefin);
+                Rsp.value = await _ventaservices.Reporte(fechadeinicio, fechadefin);
 
             }
             catch (Exception ex)
             {
                 Rsp.status = false;
-                Rsp.Msg = ex.Message;
+                Rsp.msg = ex.Message;
 
             }
 

@@ -15,7 +15,5 @@ namespace SistemStokeo.DTO
         public int? Stock { get; set; }
         public string? Precio { get; set; }
         public int? EsActivo { get; set; }
-     
-
     }
 }

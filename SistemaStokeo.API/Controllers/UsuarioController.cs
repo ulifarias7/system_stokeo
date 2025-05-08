@@ -44,13 +44,13 @@ namespace SistemaStokeo.API.Controllers
             {
                 usuario.Clave = _crypto.encriptarSHA256(usuario.Clave);
                 Rsp.status = true;
-                Rsp.Value = await _Usuarioservices.Crear(usuario);
+                Rsp.value = await _Usuarioservices.Crear(usuario);
 
             }
             catch (Exception ex)
             {
                 Rsp.status = false;
-                Rsp.Msg = ex.Message;
+                Rsp.msg = ex.Message;
 
             }
 
@@ -75,7 +75,7 @@ namespace SistemaStokeo.API.Controllers
                     var token = _crypto.generarJWt(sesion);
                     sesion.Token = token;
                     Rsp.status = true;
-                    Rsp.Value = sesion;
+                    Rsp.value = sesion;
                 }
                 else
                 {
@@ -85,7 +85,7 @@ namespace SistemaStokeo.API.Controllers
             catch (Exception ex)
             {
                 Rsp.status = false;
-                Rsp.Msg = ex.Message;
+                Rsp.msg = ex.Message;
             }
 
             return Ok(Rsp);
@@ -102,13 +102,13 @@ namespace SistemaStokeo.API.Controllers
             try
             {
                 Rsp.status = true;
-                Rsp.Value = await _Usuarioservices.Lista();
+                Rsp.value = await _Usuarioservices.Lista();
 
             }
             catch (Exception ex)
             {
                 Rsp.status = false;
-                Rsp.Msg = ex.Message;
+                Rsp.msg = ex.Message;
 
             }
 
@@ -127,13 +127,13 @@ namespace SistemaStokeo.API.Controllers
             try
             {
                 editarusuario.status = true;
-                editarusuario.Value = await _Usuarioservices.Editar(modelo);
+                editarusuario.value = await _Usuarioservices.Editar(modelo);
 
             }
             catch (Exception ex)
             {
                 editarusuario.status = false;
-                editarusuario.Msg = ex.Message;
+                editarusuario.msg = ex.Message;
 
             }
 
@@ -154,13 +154,13 @@ namespace SistemaStokeo.API.Controllers
             try
             {
                 eliminarUsuario.status = true;
-                eliminarUsuario.Value = await _Usuarioservices.Eliminar(id);
+                eliminarUsuario.value = await _Usuarioservices.Eliminar(id);
 
             }
             catch (Exception ex)
             {
                 eliminarUsuario.status = false;
-                eliminarUsuario.Msg = ex.Message;
+                eliminarUsuario.msg = ex.Message;
 
             }
 
