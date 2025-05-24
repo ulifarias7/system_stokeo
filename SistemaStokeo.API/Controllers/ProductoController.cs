@@ -101,7 +101,7 @@ namespace SistemaStokeo.API.Controllers
         //metodo de eliminar 
         [Authorize(Roles = "Administrador")]
         [HttpDelete]
-        [Route("EliminarProducto/{id:int}")]
+        [Route("EliminarProducto")]
 
         public async Task<IActionResult> EliminarProducto(int id)
         {
@@ -121,9 +121,6 @@ namespace SistemaStokeo.API.Controllers
             }
 
             return Ok(eliminarUsuario);
-
-
         }
-       
     }
 }

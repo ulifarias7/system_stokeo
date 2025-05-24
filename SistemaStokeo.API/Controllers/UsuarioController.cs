@@ -145,7 +145,7 @@ namespace SistemaStokeo.API.Controllers
 
         [Authorize(Roles = "Administrador")]
         [HttpDelete]
-        [Route("EliminarUsuario/{id:int}")]
+        [Route("EliminarUsuario")]
 
         public async Task<IActionResult> EliminarUsuario(int id)
         {

@@ -38,6 +38,12 @@ namespace SistemaStokeo.BLL.Servicios
             }
         }
 
+        public async Task<ProductoDto> GetProducto(int id) 
+        { 
+          var producto = await _productoRepository.Consultar(id);
+          return _mapper.Map<ProductoDto>(producto); 
+        }
+
         public async Task<ProductoDto> Crearproducto(ProductoDto modelo)
         {
 

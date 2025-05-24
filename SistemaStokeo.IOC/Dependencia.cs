@@ -11,12 +11,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-
 namespace SistemaStokeo.IOC
 {
     public static class Dependencia
     {
-
         public static void InyectarDependencias(this IServiceCollection services,IConfiguration configuration)
         {
             //connection con la base de datos
@@ -24,8 +22,6 @@ namespace SistemaStokeo.IOC
             {
                 option.UseSqlServer(configuration.GetConnectionString("cadenaSQL"));
             });
-
-
 
             //services de encriptacion
             services.AddSingleton<Cryptoo>();
@@ -49,8 +45,6 @@ namespace SistemaStokeo.IOC
                 };
             });
 
-
-
             //repositorios
             services.AddTransient(typeof(IGenericRepository<>),typeof(GenericRepository<>));
             services.AddScoped<IVentaRepository,VentaRepository>();
@@ -66,10 +60,6 @@ namespace SistemaStokeo.IOC
             services.AddScoped<IVentaservices,Ventaservices>();
             services.AddScoped<IDashBoardservices,DashBoardServices>();
             services.AddScoped<IMenuServices,MenuServices>();
-
-
         }
-
-
     }
 }

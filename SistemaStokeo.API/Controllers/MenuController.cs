@@ -38,6 +38,5 @@ namespace SistemaStokeo.API.Controllers
 
             return Ok(Rsp);
         }
-
     }
 }
