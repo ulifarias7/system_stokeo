@@ -13,21 +13,25 @@ namespace SistemaStokeo.DAL.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Venta> builder)
         {
+            builder.ToTable("venta");
+
             builder.HasKey(e => e.IdVenta).HasName("PK__Venta__077D5614E34BBCE8");
 
-            builder.Property(e => e.IdVenta).HasColumnName("idVenta");
+            builder.Property(e => e.IdVenta).HasColumnName("id_venta");
+
             builder.Property(e => e.FechaRegistro)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
-                .HasColumnName("fechaRegistro");
+                .HasColumnName("fecha_registro");
+
             builder.Property(e => e.NumeroDocumento)
                 .HasMaxLength(40)
                 .IsUnicode(false)
-                .HasColumnName("numeroDocumento");
+                .HasColumnName("numero_documento");
+            
             builder.Property(e => e.TipoPago)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("tipoPago");
+                .HasColumnName("tipo_pago");
+
             builder.Property(e => e.Total)
                 .HasColumnType("decimal(10, 2)")
                 .HasColumnName("total");
