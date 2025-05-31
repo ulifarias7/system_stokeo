@@ -13,36 +13,30 @@ namespace SistemaStokeo.DAL.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
+            builder.ToTable("usuario");
+
             builder.HasKey(e => e.IdUsuario).HasName("PK__Usuario__645723A609CC3DA2");
 
-            builder.ToTable("Usuario");
-
-            builder.Property(e => e.IdUsuario).HasColumnName("idUsuario");
-            builder.Property(e => e.Clave)
-                .HasMaxLength(40)
-                .IsUnicode(false) //deberia ser unica
-                .HasColumnName("clave");
-
-            builder.Property(e => e.Correo)
-                .HasMaxLength(40)
-                .IsUnicode(false)//verdadero deberia ser (unica)
-                .HasColumnName("correo");
+            builder.Property(e => e.IdUsuario).HasColumnName("id_usuario");
+            builder.Property(e => e.Clave).HasColumnName("clave");
+            builder.Property(e => e.Correo).HasColumnName("correo");
 
             builder.Property(e => e.EsActivo)
                 .HasDefaultValueSql("((1))")
-                .HasColumnName("esActivo");
+                .HasColumnName("es_activo");
 
             builder.Property(e => e.FechaRegistro)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
-                .HasColumnName("fechaRegistro");
+                .HasColumnName("fecha_registro");
 
             builder.Property(e => e.NombreCompleto)
                 .HasMaxLength(100)
                 .IsUnicode(false)
-                .HasColumnName("nombreCompleto");
+                .HasColumnName("nombre_completo");
 
-            builder.HasOne(d => d.IdRolNavigation).WithMany(p => p.Usuarios)
+            builder.HasOne(d => d.IdRolNavigation)
+                .WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.IdRol)
                 .HasConstraintName("FK__Usuario__IdRol__412EB0B6");
         }
