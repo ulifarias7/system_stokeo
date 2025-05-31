@@ -8,25 +8,25 @@ namespace SistemaStokeo.DAL.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Producto> builder)
         {
+            builder.ToTable("producto");
+
             builder.HasKey(e => e.IdProducto).HasName("PK__Producto__07F4A1320141252F");
 
-            builder.ToTable("Producto");
+            builder.Property(e => e.IdProducto).HasColumnName("id_producto");
 
-            builder.Property(e => e.IdProducto).HasColumnName("idProducto");
             builder.Property(e => e.EsActivo)
                 .HasDefaultValueSql("((1))")
-                .HasColumnName("esActivo");
+                .HasColumnName("es_activo");
 
             builder.Property(e => e.FechaRegistro)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
-                .HasColumnName("fechaRegistro");
+                .HasColumnName("fecha_registro");
 
-            builder.Property(e => e.IdCategoria).HasColumnName("idCategoria");
+            builder.Property(e => e.IdCategoria).HasColumnName("id_categoria");
            
             builder.Property(e => e.Nombre)
                 .HasMaxLength(100)
-                .IsUnicode(false)
                 .HasColumnName("nombre");
 
             builder.Property(e => e.Precio)
@@ -35,7 +35,8 @@ namespace SistemaStokeo.DAL.EntityConfiguration
 
             builder.Property(e => e.Stock).HasColumnName("stock");
 
-            builder.HasOne(d => d.IdCategoriaNavigation).WithMany(p => p.Productos)
+            builder.HasOne(d => d.IdCategoriaNavigation)
+                .WithMany(p => p.Productos)
                 .HasForeignKey(d => d.IdCategoria)
                 .HasConstraintName("FK__Producto__idCate__49C3F6B7");
         }
