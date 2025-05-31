@@ -23,7 +23,9 @@ namespace SistemaStokeo.DAL.EntityConfiguration
                 .HasMaxLength(50)
                 .HasColumnName("nombre");
 
-            builder.HasIndex(r => r.nombre).IsUnique();
+            builder.HasIndex(r => r.nombre)
+                .HasDatabaseName(name: "ux_rol_name")
+                .IsUnique();
         }
     }
 }

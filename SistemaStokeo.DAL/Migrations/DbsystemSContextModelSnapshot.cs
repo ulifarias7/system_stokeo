@@ -44,8 +44,7 @@ namespace SistemaStokeo.DAL.Migrations
                         .HasDefaultValueSql("(getdate())");
 
                     b.Property<string>("Nombre")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
+                        .HasColumnType("nvarchar(450)")
                         .HasColumnName("nombre");
 
                     b.HasKey("IdCategoria")
@@ -53,6 +52,7 @@ namespace SistemaStokeo.DAL.Migrations
 
                     b.HasIndex("Nombre")
                         .IsUnique()
+                        .HasDatabaseName("ux_categoria_nombre")
                         .HasFilter("[nombre] IS NOT NULL");
 
                     b.ToTable("categoria", (string)null);
@@ -63,7 +63,7 @@ namespace SistemaStokeo.DAL.Migrations
                     b.Property<int>("IdDetalleVenta")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("idDetalleVenta");
+                        .HasColumnName("idDetalleVens");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdDetalleVenta"));
 
@@ -253,6 +253,7 @@ namespace SistemaStokeo.DAL.Migrations
 
                     b.HasIndex("nombre")
                         .IsUnique()
+                        .HasDatabaseName("ux_rol_name")
                         .HasFilter("[nombre] IS NOT NULL");
 
                     b.ToTable("rol", (string)null);
