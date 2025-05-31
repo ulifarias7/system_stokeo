@@ -31,17 +31,10 @@ public partial class DbsystemSContext : DbContext
     public virtual DbSet<Venta> Venta { get; set; }
 
 
-
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) { }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     //Aunque están en archivos separados, el compilador de C# los une en una sola clase final en tiempo de compilación, y EF Core no sabe (ni le importa) que están divididos.
     {
         // modelBuilder.ApplyConfiguration(new CategoriaConfiguration());
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(DbsystemSContext).Assembly);
-
-        OnModelCreatingPartial(modelBuilder);
     }
-
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

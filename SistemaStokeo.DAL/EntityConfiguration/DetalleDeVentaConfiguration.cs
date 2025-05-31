@@ -10,7 +10,7 @@ namespace SistemaStokeo.DAL.EntityConfiguration
         {
             builder.HasKey(e => e.IdDetalleVenta).HasName("PK__DetalleV__BFE2843F5634CEAC");
 
-            builder.Property(e => e.IdDetalleVenta).HasColumnName("idDetalleVenta");
+            builder.Property(e => e.IdDetalleVenta).HasColumnName("idDetalleVens");
             builder.Property(e => e.Cantidad).HasColumnName("cantidad");
             builder.Property(e => e.IdProducto).HasColumnName("idProducto");
             builder.Property(e => e.IdVenta).HasColumnName("idVenta");

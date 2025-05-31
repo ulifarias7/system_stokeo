@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SistemaStokeo.MODELS;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaStokeo.DAL.EntityConfiguration
 {
@@ -13,19 +8,22 @@ namespace SistemaStokeo.DAL.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<Rol> builder)
         {
-            builder.HasKey(e => e.IdRol).HasName("PK__Rol__2A49584CDBF2A9B6");
+            builder.ToTable("rol");
 
-            builder.ToTable("Rol");
+            builder.HasKey(r => r.IdRol).HasName("PK__Rol__2A49584CDBF2A9B6");
 
-            builder.Property(e => e.fechaRegistro)
+            builder.Property(r => r.IdRol).HasColumnName("id_rol");
+
+            builder.Property(r => r.fechaRegistro)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
-                .HasColumnName("fechaRegistro");
+                .HasColumnName("fecha_registro");
 
-            builder.Property(e => e.nombre)
+            builder.Property(r => r.nombre)
                 .HasMaxLength(50)
-                .IsUnicode(false)
                 .HasColumnName("nombre");
+
+            builder.HasIndex(r => r.nombre).IsUnique();
         }
     }
 }

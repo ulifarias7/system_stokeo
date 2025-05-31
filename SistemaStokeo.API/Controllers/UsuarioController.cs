@@ -92,7 +92,7 @@ namespace SistemaStokeo.API.Controllers
         }
 
 
-        [Authorize(Roles = "administrador")]
+        //[Authorize(Roles = "administrador")]
         [HttpGet]
         [Route("ListaUsuario")]
 

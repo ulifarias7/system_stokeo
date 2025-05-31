@@ -2,29 +2,32 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SistemaStokeo.MODELS;
 
-namespace SistemaStokeo.DAL.EntityConfiguration
+namespace SistemaStokeo.DAL.EntityConfiguration 
 {
     public class CategoriaConfiguration : IEntityTypeConfiguration<Categoria>
     {
         public void Configure(EntityTypeBuilder<Categoria> builder)
         {
-            builder.HasKey(e => e.IdCategoria).HasName("PK__Categori__8A3D240C7E1A9ED5");
+            builder.ToTable("categoria");
 
-            builder.Property(e => e.IdCategoria).HasColumnName("idCategoria");
+            builder.HasKey(e => e.IdCategoria).HasName("PK__Categori__A3C02A109FEFD495");
+
+            builder.Property(e => e.IdCategoria).HasColumnName("id_categor");
 
             builder.Property(e => e.EsActivo)
                 .HasDefaultValueSql("((1))")
-                .HasColumnName("esActivo");
+                .HasColumnName("es_activo");
 
             builder.Property(e => e.FechaRegistro)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
-                .HasColumnName("fechaRegistro");
+                .HasColumnName("fecha_registro");
 
             builder.Property(e => e.Nombre)
                 .HasMaxLength(50)
-                .IsUnicode(false)
                 .HasColumnName("nombre");
+
+            builder.HasIndex(e => e.Nombre).IsUnique();
         }
     }
 }
