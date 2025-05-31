@@ -14,6 +14,8 @@ namespace SistemaStokeo.DAL.EntityConfiguration
 
             builder.Property(e => e.IdCategoria).HasColumnName("id_categoria");
 
+            builder.Property(e => e.Nombre).HasColumnName("nombre");
+
             builder.Property(e => e.EsActivo)
                 .HasDefaultValueSql("((1))")
                 .HasColumnName("es_activo");
@@ -23,8 +25,9 @@ namespace SistemaStokeo.DAL.EntityConfiguration
                 .HasColumnType("datetime")
                 .HasColumnName("fecha_registro");
 
-            builder.Property(e => e.Nombre)
-                .HasColumnName("nombre");
+            builder.HasIndex(e => e.Nombre)
+                .HasDatabaseName(name: "ux_categoria_nombre")
+                .IsUnique();
         }
     }
 }
