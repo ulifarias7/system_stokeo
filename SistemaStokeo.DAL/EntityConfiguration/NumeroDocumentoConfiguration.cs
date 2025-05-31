@@ -13,16 +13,18 @@ namespace SistemaStokeo.DAL.EntityConfiguration
     {
         public void Configure(EntityTypeBuilder<NumeroDocumento> builder)
         {
+            builder.ToTable("numero_documento");
+
             builder.HasKey(e => e.IdNumeroDocumento).HasName("PK__NumeroDo__471E421AD9410032");
 
-            builder.ToTable("NumeroDocumento");
+            builder.Property(e => e.IdNumeroDocumento).HasColumnName("id_numero_documento");
 
-            builder.Property(e => e.IdNumeroDocumento).HasColumnName("idNumeroDocumento");
             builder.Property(e => e.FechaRegistro)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
-                .HasColumnName("fechaRegistro");
-            builder.Property(e => e.UltimoNumero).HasColumnName("ultimo_Numero");
+                .HasColumnName("fecha_registro");
+
+            builder.Property(e => e.UltimoNumero).HasColumnName("ultimo_numero");
         }
     }
 }
