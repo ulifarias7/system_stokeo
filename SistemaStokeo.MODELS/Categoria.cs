@@ -1,6 +1,7 @@
 ﻿using System;
 
 namespace SistemaStokeo.MODELS;
+
 public  class Categoria
 {
     public int IdCategoria { get; set; }

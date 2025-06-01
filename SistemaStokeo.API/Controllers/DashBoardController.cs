@@ -2,20 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using SistemaStokeo.BLL.Servicios.Contrato;
 using SistemaStokeo.API.Utilidad;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using SistemStokeo.DTO;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-
-using SistemaStokeo.BLL.Servicios;
-
 
 namespace SistemaStokeo.API.Controllers
 {
     [Route("api/[controller]")]
-    //[Authorize]  a esta api solo van a poder entrar usuario autorizados 
     [ApiController]
     public class DashBoardController : ControllerBase
     {
@@ -46,7 +38,6 @@ namespace SistemaStokeo.API.Controllers
                 Rsp.msg = ex.Message;
 
             }
-
             return Ok(Rsp);
         }
     }

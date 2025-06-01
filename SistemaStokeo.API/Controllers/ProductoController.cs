@@ -3,13 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaStokeo.BLL.Servicios.Contrato;
 using SistemaStokeo.API.Utilidad;
 using SistemStokeo.DTO;
-using SistemaStokeo.BLL.Servicios;
 using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaStokeo.API.Controllers
 {
     [Route("api/[controller]")]
-    //[Authorize]
     [ApiController]
     public class ProductoController : ControllerBase
     {
@@ -21,8 +19,6 @@ namespace SistemaStokeo.API.Controllers
             _productoservicio = productoservicio;
         }
 
-
-        //metodo de listar Producto
         [Authorize(Roles = "Administrador,Empleado,supervisor,cliente")]
         [HttpGet]
         [Route("ListaProducto")]
@@ -46,8 +42,6 @@ namespace SistemaStokeo.API.Controllers
             return Ok(Rsp);
         }
 
-
-        //metodo de Guardar/crear Producto
         [Authorize(Roles = "Administrador,Empleado")]
         [HttpPost]
         [Route("CrearProducto")]
@@ -71,7 +65,6 @@ namespace SistemaStokeo.API.Controllers
             return Ok(Rsp);
         }
 
-        //metodo de editar Producto
         [Authorize(Roles = "Administrador,Empleado")]
         [HttpPut]
         [Route("EditarProducto")]
@@ -98,7 +91,6 @@ namespace SistemaStokeo.API.Controllers
 
         }
 
-        //metodo de eliminar 
         [Authorize(Roles = "Administrador")]
         [HttpDelete]
         [Route("EliminarProducto")]

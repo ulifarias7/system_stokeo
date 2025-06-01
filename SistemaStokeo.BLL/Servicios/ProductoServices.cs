@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using SistemaStokeo.BLL.Servicios.Contrato;
 using SistemaStokeo.DAL.Repositorios.Contratos;
 using SistemStokeo.DTO;
@@ -18,7 +13,8 @@ namespace SistemaStokeo.BLL.Servicios
         private readonly IGenericRepository<Producto> _productoRepository;
         private readonly IMapper _mapper;
 
-        public ProductoServices(IGenericRepository<Producto> productoRepository, IMapper mapper)
+        public ProductoServices(IGenericRepository<Producto> productoRepository,
+            IMapper mapper)
         {
             _productoRepository = productoRepository;
             _mapper = mapper;
@@ -38,22 +34,14 @@ namespace SistemaStokeo.BLL.Servicios
             }
         }
 
-        //public async Task<ProductoDto> GetProducto(int id) 
-        //{ 
-        //  var producto = await _productoRepository.Consultar(id);
-        //  return _mapper.Map<ProductoDto>(producto); 
-        //}
-
         public async Task<ProductoDto> Crearproducto(ProductoDto modelo)
         {
 
             try
             {
-                var ProductoCreado = await _productoRepository.Crear(_mapper.Map<Producto>(modelo));//convertimos producto 
+                var ProductoCreado = await _productoRepository.Crear(_mapper.Map<Producto>(modelo));
                 if (ProductoCreado.IdProducto == 0)
                     throw new TaskCanceledException(" no pudo ser creado");
-                //var query = await _productoRepository.Consultar(u => u.IdProducto == ProductoCreado.);
-                //ProductoCreado = query.Include(producto => producto.IdProductoNavigation).First();(idproductonavigation solo es para detalle venta)
                 return _mapper.Map<ProductoDto>(ProductoCreado);
             }
             catch
@@ -62,10 +50,8 @@ namespace SistemaStokeo.BLL.Servicios
             }
         }
 
-
         public async Task<bool> Editarproducto(ProductoDto modelo)
         {
-
             try
             {
                 var productomodelo = _mapper.Map<Producto>(modelo);
@@ -94,7 +80,6 @@ namespace SistemaStokeo.BLL.Servicios
             }
         }
 
-
         public async Task<bool> Eliminarproducto(int id)
         {
             try
@@ -115,6 +100,5 @@ namespace SistemaStokeo.BLL.Servicios
                 throw;
             }
         }
-
     }
 }

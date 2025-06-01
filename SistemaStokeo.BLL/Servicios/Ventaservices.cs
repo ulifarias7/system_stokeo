@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using SistemaStokeo.BLL.Servicios.Contrato;
 using SistemaStokeo.DAL.Repositorios.Contratos;
 using SistemStokeo.DTO;
@@ -13,15 +8,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SistemaStokeo.BLL.Servicios
 {
-
-    // repasar esto de los servicios
     public class Ventaservices : IVentaservices
     {
         private readonly IVentaRepository _ventaRepository;
         private readonly IGenericRepository<DetalleVenta> _detallerepositorio;
         private readonly IMapper _mapper;
 
-        public Ventaservices(IVentaRepository ventaRepository, IGenericRepository<DetalleVenta> detallerepositorio, IMapper mapper)
+        public Ventaservices(IVentaRepository ventaRepository,
+            IGenericRepository<DetalleVenta> detallerepositorio,
+            IMapper mapper)
         {
             _ventaRepository = ventaRepository;
             _detallerepositorio = detallerepositorio;
@@ -37,8 +32,6 @@ namespace SistemaStokeo.BLL.Servicios
                     throw new TaskCanceledException(" no se creo la venta");
 
                 return _mapper.Map<VentaDto>(ventagenerada);
-
-
             }
             catch
             {
@@ -63,7 +56,6 @@ namespace SistemaStokeo.BLL.Servicios
                     ).Include(dv => dv.DetalleVenta)
                     .ThenInclude(p=>p.IdProductoNavigation)
                     .ToListAsync();
-                    
                 }
                 else
                 {

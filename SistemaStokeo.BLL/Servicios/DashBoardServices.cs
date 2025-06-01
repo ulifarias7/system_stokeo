@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using SistemaStokeo.BLL.Servicios.Contrato;
 using SistemaStokeo.DAL.Repositorios.Contratos;
 using SistemStokeo.DTO;
@@ -18,14 +13,15 @@ namespace SistemaStokeo.BLL.Servicios
         private readonly IGenericRepository<Producto> _Productorepositorio;
         private readonly IMapper _mapper;
 
-        public DashBoardServices(IVentaRepository ventaRepository, IGenericRepository<Producto> productorepositorio, IMapper mapper)
+        public DashBoardServices(IVentaRepository ventaRepository, 
+            IGenericRepository<Producto> productorepositorio,
+            IMapper mapper)
         {
             _ventaRepository = ventaRepository;
             _Productorepositorio = productorepositorio;
             _mapper = mapper;
         }
 
-        //metodo solo para dashboardservices
         private IQueryable<Venta> RetornarVentas(IQueryable<Venta>tablaventa,int restarCantidadDias)
         {
             DateTime? ultimaFecha=tablaventa.OrderByDescending(v=>v.FechaRegistro).Select(v=>v.FechaRegistro).First();

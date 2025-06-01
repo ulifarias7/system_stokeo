@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using SistemaStokeo.BLL.Servicios.Contrato;
 using SistemaStokeo.DAL.Repositorios.Contratos;
 using SistemStokeo.DTO;
@@ -18,7 +13,10 @@ namespace SistemaStokeo.BLL.Servicios
         private readonly IGenericRepository<Menu> _MenuRepository;
         private readonly IMapper _mapper;
 
-        public MenuServices(IGenericRepository<Usuario> usuarioRepository, IGenericRepository<MenuRol> menuRolRepository, IGenericRepository<Menu> menuRepository, IMapper mapper)
+        public MenuServices(IGenericRepository<Usuario> usuarioRepository,
+            IGenericRepository<MenuRol> menuRolRepository,
+            IGenericRepository<Menu> menuRepository,
+            IMapper mapper)
         {
             _UsuarioRepository = usuarioRepository;
             _MenuRolRepository = menuRolRepository;

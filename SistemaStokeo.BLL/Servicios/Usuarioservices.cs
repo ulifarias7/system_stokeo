@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using SistemaStokeo.BLL.Servicios.Contrato;
 using SistemaStokeo.DAL.Repositorios.Contratos;
 using SistemStokeo.DTO;
@@ -63,7 +58,6 @@ namespace SistemaStokeo.BLL.Servicios
             }
         }
 
-
         public async Task<UsuarioDto> Crear(UsuarioDto modelo)
         {
             try
@@ -75,7 +69,6 @@ namespace SistemaStokeo.BLL.Servicios
 
                 usuarioCreado = query.Include(rol => rol.IdRolNavigation).First();
                 return _mapper.Map<UsuarioDto>(usuarioCreado);
-                
             }
             catch
             {

@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaStokeo.BLL.Servicios.Contrato;
 using SistemaStokeo.API.Utilidad;
 using SistemStokeo.DTO;
-using SistemaStokeo.BLL.Servicios;
 
 namespace SistemaStokeo.API.Controllers
 {

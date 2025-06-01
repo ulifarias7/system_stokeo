@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SistemaStokeo.DAL.Repositorios.Contratos;
+﻿using SistemaStokeo.DAL.Repositorios.Contratos;
 using SistemaStokeo.DAL.DBContext;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
@@ -12,16 +7,12 @@ namespace SistemaStokeo.DAL.Repositorios
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-
         private readonly DbsystemSContext _dbContext;
-
 
         public GenericRepository(DbsystemSContext dbContext)
         {
             _dbContext = dbContext;
         }
-
-
 
         public async Task<T> Obtener(Expression<Func<T, bool>> filtro)
         {
@@ -73,7 +64,7 @@ namespace SistemaStokeo.DAL.Repositorios
         {
             try
             {
-                _dbContext.Set<T>().Remove(modelo);   //empezamos con la bdd ,establecemos el modelo que queremos trabajar 
+                _dbContext.Set<T>().Remove(modelo); 
                 await _dbContext.SaveChangesAsync();
                 return true;
             }
@@ -84,13 +75,10 @@ namespace SistemaStokeo.DAL.Repositorios
         }
 
         
-
-        public async Task<IQueryable<T>> Consultar(Expression<Func<T, bool>> filtro = null) // vamos a establecer  consultar para el que lo llame sea quien lo ejecute 
-
+        public async Task<IQueryable<T>> Consultar(Expression<Func<T, bool>> filtro = null)
         {
             try
             {
-
                 IQueryable<T> queryModelo = filtro == null ? _dbContext.Set<T>() : _dbContext.Set<T>().Where(filtro);
                 return queryModelo.AsQueryable();
             }

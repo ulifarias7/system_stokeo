@@ -1,6 +1,6 @@
 ﻿namespace SistemaStokeo.API.Utilidad
 {
-    public class Response<T> //la T es como para uso generico
+    public class Response<T> 
     {
         public bool status { get; set; }
         public T value { get; set; }

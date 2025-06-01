@@ -61,7 +61,6 @@ namespace SistemaStokeo.API.Controllers
                 Rsp.msg = ex.Message;
 
             }
-
             return Ok(Rsp);
         }
     }

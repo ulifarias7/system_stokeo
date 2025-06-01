@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using SistemaStokeo.BLL.Servicios.Contrato;
 using SistemaStokeo.DAL.Repositorios.Contratos;
 using SistemStokeo.DTO;
@@ -17,7 +12,8 @@ namespace SistemaStokeo.BLL.Servicios
         private readonly IGenericRepository<Rol> _ROLrepositorio;
         private readonly IMapper _mapper;
 
-        public RolServices(IGenericRepository<Rol> ROLrepositorio, IMapper mapper)
+        public RolServices(IGenericRepository<Rol> ROLrepositorio,
+            IMapper mapper)
         {
             _ROLrepositorio = ROLrepositorio;
             _mapper = mapper;
@@ -29,7 +25,6 @@ namespace SistemaStokeo.BLL.Servicios
             {
                 var ListaRoles = await _ROLrepositorio.Consultar();
                 return _mapper.Map<List<RolDto>>(ListaRoles.ToList());
-
             }
             catch
             {

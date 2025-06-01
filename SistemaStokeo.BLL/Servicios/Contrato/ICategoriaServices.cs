@@ -1,9 +1,4 @@
 ﻿using SistemStokeo.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SistemaStokeo.BLL.Servicios.Contrato
 {
@@ -11,6 +6,5 @@ namespace SistemaStokeo.BLL.Servicios.Contrato
     {
         Task<List<CategoriaDto>> ListCategoria();
         Task<CategoriaDto> CrearCategoria(CategoriaDto categoria);
-
     }
 }

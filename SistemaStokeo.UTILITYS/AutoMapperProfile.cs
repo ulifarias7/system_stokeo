@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using AutoMapper;
 using SistemaStokeo.MODELS;
 using SistemStokeo.DTO;
@@ -11,8 +6,6 @@ namespace SistemaStokeo.UTILITYS
 {
     public class AutoMapperProfile : Profile
     {
-
-
         public AutoMapperProfile()
         {
             #region Rol
@@ -51,9 +44,6 @@ namespace SistemaStokeo.UTILITYS
                 destino.EsActivo,
                 opt => opt.MapFrom(origen => origen.EsActivo == 1 ? true : false)
                 );
-
-          
-       
             #endregion Usuario
 
             #region Categoria
@@ -85,7 +75,7 @@ namespace SistemaStokeo.UTILITYS
             destino.Precio,
             opt => opt.MapFrom(origen => Convert.ToDecimal(origen.Precio, new CultureInfo("es-PE")))
             )
-         .ForMember(destino =>
+            .ForMember(destino =>
             destino.EsActivo,
             opt => opt.MapFrom(origen => origen.EsActivo == 1 ? true : false)
             );
@@ -135,10 +125,6 @@ namespace SistemaStokeo.UTILITYS
                 destino.Total,
                 opt => opt.MapFrom(origen => Convert.ToDecimal(origen.TotalTexto, new CultureInfo("es-PE")))
                 );
-
-
-
-
             #endregion DetalleVenta
 
             #region Reporte
@@ -173,7 +159,6 @@ namespace SistemaStokeo.UTILITYS
                 );
 
             #endregion Reporte 
-
         }
     }
 }

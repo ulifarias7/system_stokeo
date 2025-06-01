@@ -3,16 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaStokeo.BLL.Servicios.Contrato;
 using SistemaStokeo.API.Utilidad;
 using SistemStokeo.DTO;
-using SistemaStokeo.BLL.Servicios;
-using SistemaStokeo.DAL.DBContext;
-using SistemaStokeo.MODELS;
 using Microsoft.AspNetCore.Authorization;
-using System.Security.Cryptography;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.EntityFrameworkCore;
 using SistemaStokeo.UTILITYS;
-
-
 
 namespace SistemaStokeo.API.Controllers
 {
@@ -23,9 +15,9 @@ namespace SistemaStokeo.API.Controllers
 
         private readonly IUsuarioServices _Usuarioservices;
         private readonly Cryptoo _crypto;
-       
 
-        public UsuarioController(IUsuarioServices usuarioservices, Cryptoo crypto)
+        public UsuarioController(IUsuarioServices usuarioservices,
+            Cryptoo crypto)
         {
             _Usuarioservices = usuarioservices;
             _crypto = crypto;
@@ -91,8 +83,6 @@ namespace SistemaStokeo.API.Controllers
             return Ok(Rsp);
         }
 
-
-        //[Authorize(Roles = "administrador")]
         [HttpGet]
         [Route("ListaUsuario")]
 
@@ -119,7 +109,6 @@ namespace SistemaStokeo.API.Controllers
         [Authorize(Roles = "Administrador")]
         [HttpPut]
         [Route("EditarUsuario")]
-
         public async Task<IActionResult>EditarUsuario(UsuarioDto modelo)
         {
 
@@ -138,8 +127,6 @@ namespace SistemaStokeo.API.Controllers
             }
 
             return Ok(editarusuario);
-
-
         }
 
 
@@ -165,7 +152,6 @@ namespace SistemaStokeo.API.Controllers
             }
 
             return Ok(eliminarUsuario);
-
         }
     }
 }
