@@ -2,8 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SistemaStokeo.MODELS;
 
-namespace SistemaStokeo.DAL.EntityConfiguration
+namespace SistemaStokeo.DAL.DBContext
 {
+    public partial class DbsystemSContext{ public virtual DbSet<Rol> Rols { get; set; } }
     public class RolConfiguration : IEntityTypeConfiguration<Rol>
     {
         public void Configure(EntityTypeBuilder<Rol> builder)

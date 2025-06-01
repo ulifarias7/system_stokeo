@@ -2,8 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SistemaStokeo.MODELS;
 
-namespace SistemaStokeo.DAL.EntityConfiguration
+namespace SistemaStokeo.DAL.DBContext
 {
+    public partial class DbsystemSContext { public virtual DbSet<DetalleVenta> DetalleVenta { get; set; } }
     public class DetalleDeVentaConfiguration : IEntityTypeConfiguration<DetalleVenta>
     {
         public void Configure(EntityTypeBuilder<DetalleVenta> builder)

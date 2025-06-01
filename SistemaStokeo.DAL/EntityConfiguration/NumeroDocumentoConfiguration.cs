@@ -1,14 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SistemaStokeo.MODELS;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SistemaStokeo.DAL.EntityConfiguration
+namespace SistemaStokeo.DAL.DBContext
 {
+    public partial class DbsystemSContext { public virtual DbSet<NumeroDocumento> NumeroDocumentos { get; set; } }
     public class NumeroDocumentoConfiguration : IEntityTypeConfiguration<NumeroDocumento>
     {
         public void Configure(EntityTypeBuilder<NumeroDocumento> builder)

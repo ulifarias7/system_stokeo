@@ -2,8 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SistemaStokeo.MODELS;
 
-namespace SistemaStokeo.DAL.EntityConfiguration
+namespace SistemaStokeo.DAL.DBContext
 {
+    public partial class DbsystemSContext { public virtual DbSet<MenuRol> MenuRols { get; set; } }
     public class MenuRolConfiguration : IEntityTypeConfiguration<MenuRol>
     {
         public void Configure(EntityTypeBuilder<MenuRol> builder)
