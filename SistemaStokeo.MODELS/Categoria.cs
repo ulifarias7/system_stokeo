@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 
 namespace SistemaStokeo.MODELS;
-
 public  class Categoria
 {
     public int IdCategoria { get; set; }
