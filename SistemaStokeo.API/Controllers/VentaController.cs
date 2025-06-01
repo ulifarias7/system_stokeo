@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaStokeo.BLL.Servicios.Contrato;
 using SistemaStokeo.API.Utilidad;
 using SistemStokeo.DTO;
-using SistemaStokeo.BLL.Servicios;
 using Microsoft.AspNetCore.Authorization;
 
 namespace SistemaStokeo.API.Controllers
@@ -42,10 +41,10 @@ namespace SistemaStokeo.API.Controllers
             return Ok(Rsp);
         }
 
+
         [Authorize(Roles = "Administrador,Empleado,supervisor")]
         [HttpGet]
         [Route("ListaVenta")]
-
         public async Task<IActionResult> ListaVenta(string? Buscarpo,string? Numerodeventa,string? fechadeinicio,string? fechadefin )
         {
             var Rsp = new Response<List<VentaDto>>();
@@ -72,7 +71,6 @@ namespace SistemaStokeo.API.Controllers
         [Authorize(Roles = "Administrador,Empleado,supervisor")]
         [HttpGet]
         [Route("ReporteVenta")]
-
         public async Task<IActionResult> ReporteVenta(string? fechadeinicio, string? fechadefin)
         {
             var Rsp = new Response<List<ReporteDto>>();
