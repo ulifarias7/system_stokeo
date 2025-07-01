@@ -14,9 +14,3 @@ public partial class DbsystemSContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(DbsystemSContext).Assembly);
     }
 }
-
-
-//COSA POR HACER 
-// ver si la base de datos quedo bien(fk,pk ,nombres ,y si falto algo)
-//ver si la base esta igual que en el curso(me parece que esta ,al lo de documento)
-//ver lo de las clases

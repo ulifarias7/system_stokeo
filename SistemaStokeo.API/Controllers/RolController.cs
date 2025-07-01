@@ -4,6 +4,8 @@ using SistemaStokeo.BLL.Servicios.Contrato;
 using SistemaStokeo.API.Utilidad;
 using SistemStokeo.DTO;
 using Microsoft.AspNetCore.Authorization;
+using Swashbuckle.AspNetCore.Filters;
+using SistemaStokeo.API.Swagger.Attribute;
 
 namespace SistemaStokeo.API.Controllers
 {
@@ -18,8 +20,10 @@ namespace SistemaStokeo.API.Controllers
             _rolServicio = rolServicio;
         }
 
+
         [Authorize(Roles = "Administrador")]
         [HttpGet]
+        [StandarResponsesAttribute]
         [Route("ListaRoles")]
         public async Task<IActionResult> ListaRoles()
         {
@@ -28,15 +32,12 @@ namespace SistemaStokeo.API.Controllers
             {
                 Rsp.status = true;
                 Rsp.value = await _rolServicio.List();
-
             }
             catch (Exception ex)
             {
                 Rsp.status = false;
                 Rsp.msg = ex.Message;
-
             }
-
             return Ok(Rsp);
         }
     }

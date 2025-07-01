@@ -35,10 +35,10 @@ namespace SistemaStokeo.BLL.Servicios
             }
         }
 
-        public async Task<List<CategoriaDto>> ListCategoria()
+        public async Task<List<CategoriaDto>> ListCategoria() 
         {
             var Listacategorias = await _Categoriarepositorio.Consultar();
-            if (Listacategorias == null)
+            if (Listacategorias is null)
             {
                 throw new TaskCanceledException("no trajo resultados el repo");
             }

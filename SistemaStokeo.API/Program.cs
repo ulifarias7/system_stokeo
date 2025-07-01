@@ -1,5 +1,10 @@
+﻿using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
+using SistemaStokeo.API.Swagger.Examples;
+using SistemaStokeo.API.Swagger.Fillters;
 using SistemaStokeo.IOC;
+using Swashbuckle.AspNetCore.Filters;
+using System.Reflection;
 
 
 //crea un host web que incluye tanto inyeccion de dpependecia ,configuracion desde el appsetting etc
@@ -22,18 +27,18 @@ builder.Services.InyectarDependencias(builder.Configuration);
 // Authorization JWT (agregar los roles a los controladores)
 builder.Services.AddSwaggerGen(c =>
 {
-c.SwaggerDoc("v1", new OpenApiInfo { Title = "Apistokeo", Version = "v1" });
-c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-{
-Description = @"JWT Authorization header using the Bearer scheme. <br /> <br />
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Apistokeo", Version = "v1" });
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = @"JWT Authorization header using the Bearer scheme. <br /> <br />
     Enter 'Bearer' [space] and then your token in the text input below.<br /> <br />
     Example: 'Bearer 12345abcdef'<br /> <br />",
-Name = "Authorization",
-In = ParameterLocation.Header,
-Type = SecuritySchemeType.ApiKey,
-Scheme = "Bearer"
-});
-c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement()
 {
 {
     new OpenApiSecurityScheme
@@ -48,10 +53,24 @@ c.AddSecurityRequirement(new OpenApiSecurityRequirement()
         In = ParameterLocation.Header,
     },
     new List<string>()
-}
+    }
+    });
+    c.EnableAnnotations();
+    // Configuración de Swagger "documentacion"
+    c.OperationFilter<ApiResponseExamplesFilter>(); // Para ejemplos de respuestas
+    c.ExampleFilters();  // Habilita el sistema de ejemplos
+
+
 });
-c.EnableAnnotations();
-});
+//otros assemblies si están en diferentes proyectos(declaracion de las clases de ejemplos )
+builder.Services.AddSwaggerExamplesFromAssemblies(
+    typeof(SuccessExample).Assembly,
+    typeof(NotFoundExample).Assembly,
+    typeof(InternalErrorExample).Assembly,
+    typeof(ForbiddenExample).Assembly
+);
+
+
 
 //Cors para la conection
 builder.Services.AddCors(options =>
